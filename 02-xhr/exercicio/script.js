@@ -19,9 +19,8 @@ const chamarRequisicao = (e) => {
   const request = new XMLHttpRequest();
   
   request.open("GET", `https://pokeapi.co/api/v2/pokemon/${pkmNome}/`, true);
-
+  
   request.addEventListener("readystatechange", function () {
-    console.log('request', request)
     if (request.readyState == 4 && request.status == 200) {
       const data = JSON.parse(request.response);
       const p = document.createElement('p');
