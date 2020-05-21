@@ -250,3 +250,25 @@ fetch(url, {
 }
 ```
 
+### async e await
+
+- [Expressão da função async](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/async_function);
+
+A palavra-chave `async` é usada em declarações ou expressões de funções. Assim, elas se tornam funções assíncronas e permitem o uso do `await` dentro delas.
+
+Elas normalmente são usadas em conjunto de funções assíncronas, como `Promise` (e, consequentemente, `fetch`), quando é necessário esperar a resolução desta para dar continudade às operações seguintes.
+
+```javascript
+function resolveDoisSegundos(x) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(x);
+    }, 2000);
+  });
+};
+
+const expFuncaoAsync = async x => {
+  const a = await resolveDoisSegundos(20); // aguarda essa promise ser resolvida antes de continuar
+  return x + a;
+};
+```
