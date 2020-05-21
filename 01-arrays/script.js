@@ -31,9 +31,14 @@ const profissionaisMelhores = profissionais.map(profissional => {
   return profissional + "a";
 })
 
+const profissionaisMelhores = profissionais.map(profissional => {
+  return profissional + "a";
+})
+
 // 2) Retornar frutas com somente a primeira letra maiúscula
 const frutas = ["maçã", "banana", "Pera", "Melancia", "pêsSSEgO", "jAcA"];
 
+<<<<<<< HEAD
 // retorno:
 // ["Maçã", "Banana", "Pera", "Melancia", "Pêssego", "Jaca"]
 
@@ -86,12 +91,17 @@ const notasFinaisAlunas = notasAlunas.map(
     return novaAluna;
   }
 )
+=======
+const frutasFormatadas = frutas.map(fruta => fruta[0].toUpperCase() + fruta.toLowerCase().substr(1));
+
+>>>>>>> Exercicio array resolvido
 
 // filter(): retorna uma nova array com apenas com elementos que atendem à condição
 
 // 1) Criar nova array somente com números pares
 const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+<<<<<<< HEAD
 // [2, 4, 6, 8, 10]
 
 const numPares = num.filter(
@@ -100,6 +110,9 @@ const numPares = num.filter(
     return ehNumPar;
   }
 )
+=======
+const pares = num.filter(n => n % 2 === 0);
+>>>>>>> Exercicio array resolvido
 
 // 2) Criar nova array somente com profissionais da área de TI
 const pessoas = [
@@ -110,6 +123,7 @@ const pessoas = [
   { nome: "Monica", area: "medicina", profissao: "cardiologista"},
 ];
 
+<<<<<<< HEAD
 // expectativa: 
 // const profissionaisTI = [
 //   { nome: "Mell", area: "TI", profissao: "dev" },
@@ -143,6 +157,15 @@ const soma = num.reduce(
     return somaAtual;
   }
 );
+=======
+const pessoasTI = pessoas.filter(pessoa => pessoa.area === "TI");
+
+
+// reduce(): recebe uma array e retorna um valor só. Redutor.
+
+// 1) Dado uma array de números, retornar a soma de todos eles
+const soma = num.reduce((acc, curr) => acc + curr);
+>>>>>>> Exercicio array resolvido
 
 // 2) Retornar o lucro de uma empresa
 // se for saída, subtratir o valor
@@ -154,6 +177,7 @@ const transacoes = [
   { descricao: "salario 1", valor: 8500, tipo: "saída" }
 ];
 
+<<<<<<< HEAD
 const lucro = transacoes.reduce(
   (acumulado, item) => {    
     console.log(item.tipo === "entrada");
@@ -164,6 +188,9 @@ const lucro = transacoes.reduce(
     }
   }, 0
 );
+=======
+const lucro = transacoes.reduce((acc, curr) => curr.tipo === "entrada" ? acc + curr.valor : acc - curr.valor, 0)
+>>>>>>> Exercicio array resolvido
 
 // sort(): organiza itens da array de acordo com uma verificação
 
