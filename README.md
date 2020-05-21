@@ -213,3 +213,40 @@ promise
     console.log(err);
   });
 ```
+
+
+### Fetch
+
+- [Fetch()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch);
+É um método recentemente introduzido e ainda fase experimental. É usado para transferências de dados entre recursos web. O `fetch()` retorna uma `Promise`.
+
+
+### Anatomia de fetch()
+
+Para realizar uma requisição `GET`, sem informações adicionais:
+
+```javascript
+fetch(url)
+  .then(response => response.json())
+  .then(json => console.log(json))
+  .catch(erro => console.log(erro));
+}
+```
+
+Opcionalmente, é possível adicionar [informações da requisição](#anatomia-de-uma-requisição-http), como segundo parâmetro, por meio de um objeto.
+
+```javascript
+fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'image/jpeg'
+    }
+    mode: 'cors',
+    cache: 'default'
+  })
+  .then(response => response.json())
+  .then(json => console.log(json))
+  .catch(erro => console.log(erro));
+}
+```
+
