@@ -14,7 +14,8 @@ const profissionais = [
 
 const profissionaisMelhores = profissionais.map(
   (item) => {
-    return item + "a";
+    const novaProfissional = item + "a";
+    return novaProfissional;
   }
 );
 
@@ -33,15 +34,50 @@ const frutas = ["maçã", "banana", "Pera", "Melancia", "pêsSSEgO", "jAcA"];
 // 2. colocar a primeira letra maiúscula
 // 3. colocar a lista nova em uma variável
 
-const frutasFormatadas = frutas.map(
-  (item) => {
-    const letraInicial = item[0].toUpperCase();
-    const itemMinusculo = item.toLowerCase();
-    const itemSemPrimeiraLetra = itemMinusculo.substring(1);
-
-    return letraInicial + itemSemPrimeiraLetra;
+// 3) Retonar uma nova array com o nome das alunas com a nota final
+const notasAlunas = [
+  { nome: "Julia", notas: [
+      { materia: "matemática", nota: 7, peso: 1.5 },
+      { materia: "portugues", nota: 3, peso: 2 }
+    ]
+  },
+  { nome: "Zelia", notas: [
+      { materia: "matemática", nota: 6, peso: 1.5 },
+      { materia: "portugues", nota: 5, peso: 2 }
+    ]
+  },
+  { nome: "Jussara", notas: [
+      { materia: "matemática", nota: 8, peso: 1.5 },
+      { materia: "portugues", nota: 2, peso: 2 }
+    ]
   }
-);
+]
+
+const notasFinaisAlunas = notasAlunas.map(
+  (aluna) => {
+    const arrNotas = aluna.notas;
+
+    let somaNotas = 0;
+    let somaPesos = 0;
+
+    for(let i = 0; i < arrNotas.length; i++) {
+      const nota = arrNotas[i].nota;
+      const peso = arrNotas[i].peso;
+      const notaFinalMateria = nota * peso;
+      somaNotas += notaFinalMateria;
+      somaPesos += peso;
+    }
+
+    const notaFinalUm = somaNotas / somaPesos;
+
+    const novaAluna = {
+      nome: aluna.nome,
+      notaFinal: notaFinalUm
+    }
+
+    return novaAluna;
+  }
+)
 
 // filter(): retorna uma nova array com apenas com elementos que atendem à condição
 
@@ -51,8 +87,8 @@ const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 // [2, 4, 6, 8, 10]
 
 const numPares = num.filter(
-  (bolinha) => {
-    const ehNumPar = bolinha % 2 === 0;
+  (item) => {
+    const ehNumPar = item % 2 === 0;
     return ehNumPar;
   }
 )
@@ -79,12 +115,30 @@ const profissionaisTI = pessoas.filter(
   }
 )
 
-// reduce(): recebe uma array e retorna um valor só. Redutor.
+// 3) Criar uma array somente com alunas que passaram de ano (média > 5)
+const alunasPassantes = notasFinaisAlunas.filter(
+  (item) => {
+    const media = 5;
+    const passou = item.notaFinal >= media;
+    return passou;
+  }
+);
 
+// reduce(): recebe uma array e retorna um valor só. Redutor.
 // 1) Dado uma array de números, retornar a soma de todos eles
-const soma = num.reduce((acc, curr) => acc + curr);
+// input: array
+// output: um único valor
+// const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const soma = num.reduce(
+  (acumulado, item) => {
+    const somaAtual = acumulado + item;
+    return somaAtual;
+  }
+);
 
 // 2) Retornar o lucro de uma empresa
+// se for saída, subtratir o valor
+// se for entrada, adicionar o valor
 const transacoes = [
   { descricao: "carro", valor: 32000, tipo: "saída" },
   { descricao: "cliente 1", valor: 10000, tipo: "entrada" },
@@ -92,7 +146,16 @@ const transacoes = [
   { descricao: "salario 1", valor: 8500, tipo: "saída" }
 ];
 
-const lucro = transacoes.reduce((acc, curr) => curr.tipo === "entrada" ? acc + curr.valor : acc - curr.valor, 0)
+const lucro = transacoes.reduce(
+  (acumulado, item) => {    
+    console.log(item.tipo === "entrada");
+    if(item.tipo === "entrada") {
+      return acumulado + item.valor;
+    } else {
+      return acumulado - item.valor;
+    }
+  }, 0
+);
 
 // sort(): organiza itens da array de acordo com uma verificação
 
