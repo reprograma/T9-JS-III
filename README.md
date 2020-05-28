@@ -32,7 +32,7 @@
 
 HTTP é um protocolo que faz a conexão entre um receptor, normalmente o navegador (_browser_) e um servidor. Ela é a base da transferência de dados na Web.
 
-Quando um site é acessado, seu navegador envia uma solicitação (_request_) para o servidor onde ele está hospedado. Este, por sua vez, envia uma resposta (_respose_) com o resultado dessa solicitação.
+Quando um site é acessado, seu navegador envia uma solicitação (_request_) para o servidor onde ele está hospedado. Este, por sua vez, envia uma resposta (_response_) com o resultado dessa solicitação.
 
 ![Diagrama: à esquerda um computador com o texto "client" dentro dele e a direita, uma CPU com o texto "Server". Uma flecha sai do Cliente e vai para o Servidor, com o texto "HTTP Request" como legenda. Uma outra flecha sai do Servidor e vai para o Cliente, com a legenda "HTTP Response".](./img/client-server.png)
 
@@ -155,6 +155,8 @@ XMLHttpRequest (XHR) é um objeto que são usados para interagir com servidores.
 Apesar de ter "XML" no seu nome, a requisição de `XMLHttpRequest` pode receber qualquer tipo de dado. 
 
 ### Anatomia de uma requisição XMLHttpRequest
+
+- [Sobre os códigos readyState](https://developer.mozilla.org/pt-BR/docs/Web/API/XMLHttpRequest/readyState);
 
 ```javascript
 // cria um novo construtor XMLHttpRequest
