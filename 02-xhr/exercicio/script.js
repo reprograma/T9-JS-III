@@ -4,6 +4,10 @@
 // A imagem deve ser ter essa URL https://pokeres.bastionbot.org/images/pokemon/${id_do_pokemon}.png
 // Essa id é retirada da API anterior
 
+
+// TRANSFORMAR A REQUISIÇÃO XMLHTTREQUEST EM FETCH
+// 14h30
+
 const form = document.getElementById('pkmForm');
 const input = document.getElementById('pkmInput');
 const pkmPlaceholder = document.getElementById('pkmPlaceholder');
@@ -15,8 +19,9 @@ const chamarRequisicao = (e) => {
   const request = new XMLHttpRequest();
   
   request.open("GET", `https://pokeapi.co/api/v2/pokemon/${pkmNome}/`, true);
-  
+
   request.addEventListener("readystatechange", function () {
+    console.log('request', request)
     if (request.readyState == 4 && request.status == 200) {
       const data = JSON.parse(request.response);
       const p = document.createElement('p');
