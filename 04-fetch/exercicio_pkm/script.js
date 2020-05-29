@@ -4,37 +4,43 @@
 // A imagem deve ser ter essa URL https://pokeres.bastionbot.org/images/pokemon/${id_do_pokemon}.png
 // Essa id é retirada da API anterior
 
-
-// TRANSFORMAR A REQUISIÇÃO XMLHTTREQUEST EM FETCH
-// 14h30
-
-const form = document.getElementById('pkmForm');
-const input = document.getElementById('pkmInput');
-const pkmPlaceholder = document.getElementById('pkmPlaceholder');
+const form = document.getElementById("pkmForm");
+const input = document.getElementById("pkmInput");
+const pkmPlaceholder = document.getElementById("pkmPlaceholder");
 
 const chamarRequisicao = (e) => {
   e.preventDefault();
   pkmPlaceholder.innerHTML = "";
   const pkmNome = input.value.toLowerCase();
-  const request = new XMLHttpRequest();
-  
-  request.open("GET", `https://pokeapi.co/api/v2/pokemon/${pkmNome}/`, true);
 
-  request.addEventListener("readystatechange", function () {
-    console.log('request', request)
-    if (request.readyState == 4 && request.status == 200) {
-      const data = JSON.parse(request.response);
-      const p = document.createElement('p');
-      const img = document.createElement('img');
+  fetch(`https://pokeapi.co/api/v2/pokemon/${pkmNome}/`)
+    .then((resposta) => {return resposta.json()}) // JSON.parse(resposta)
+    .then((dadoObj) => {
+      inserirPkmPagina(dadoObj)
+    });
+};
 
-      p.textContent = data.species.name;
-      img.setAttribute('src', `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`)
+new XMLHttpRequest() + new Promise() = fetch()
 
-      pkmPlaceholder.appendChild(p).appendChild(img);
-    }
-  })
-  
-  request.send();
+
+
+
+
+
+
+
+
+const inserirPkmPagina = (dados) => {
+  const p = document.createElement("p");
+  const img = document.createElement("img");
+
+  p.textContent = dados.species.name;
+  img.setAttribute(
+    "src",
+    `https://pokeres.bastionbot.org/images/pokemon/${dados.id}.png`
+  );
+
+  pkmPlaceholder.appendChild(p).appendChild(img);
 }
 
-form.addEventListener('submit', (e) => chamarRequisicao(e));
+form.addEventListener("submit", (e) => chamarRequisicao(e));
