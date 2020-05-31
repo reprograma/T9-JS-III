@@ -20,16 +20,6 @@ const chamarRequisicao = (e) => {
     });
 };
 
-new XMLHttpRequest() + new Promise() = fetch()
-
-
-
-
-
-
-
-
-
 const inserirPkmPagina = (dados) => {
   const p = document.createElement("p");
   const img = document.createElement("img");
